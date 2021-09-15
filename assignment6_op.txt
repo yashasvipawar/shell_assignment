@@ -1,0 +1,145 @@
+question1:
+clear
+echo "Enter a string to be entered:"
+read str
+echo
+len=`echo $str | wc -c`
+len=`expr $len - 1`
+i=1
+j=`expr $len / 2`
+while test $i -le $j
+do
+k=`echo $str | cut -c $i`
+l=`echo $str | cut -c $len`
+if test $k != $l
+then
+echo "String is not palindrome"
+exit
+fi
+i=`expr $i + 1`
+len=`expr $len - 1`
+done
+echo "String is palindrome"
+
+op:
+Enter a string to be entered:
+maam
+String is palindrome
+
+question2:
+echo -e "Enter the value of Basic Salary: \c"
+read basic_sal
+if [ $basic_sal -ge 0 ]
+then
+  basic=$(expr 1.0*"$basic_sal" | bc)
+  da=$(expr 0.34*"$basic" | bc)
+  hra=$(expr 0.24*"$basic" | bc)
+  pf=$(expr 0.11*"$basic" | bc)
+  salary=$(expr "$basic"+"$da"+"$hra"-" $pf" | bc)
+ 
+  echo "Your Basic Salary: $basic "
+  echo "Your DA: $da"
+  echo "Your HRA: $hra"
+  echo "Your PF: $pf"
+  echo " ------------"
+  echo "Your Net Salary is Rs. $salary "
+else
+  echo "Please enter a valid Basic Salary "
+fi
+
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a62.sh
+Enter the value of Basic Salary: 20000
+Your Basic Salary: 20000.0
+Your DA: 6800.00
+Your HRA: 4800.00
+Your PF: 2200.00
+ ------------
+Your Net Salary is Rs. 29400.00
+
+question3:
+read -p "CD no: " cdno
+read -p "Enter Movie Name: " movie
+read -p "Language: " language
+read -p "Price: " price
+read -p "Date of Release (mm/dd/yyyy): " dor
+if date=$(date -d "$dor" +D)
+then
+ echo "CD no: $cdno " >movie.txt
+ echo "Movie Name: $movie " >>movie.txt
+ echo "Language: $language " >>movie.txt
+ echo "Price: $price " >>movie.txt
+ echo "Date of Release: $dor " >>movie.txt
+fi
+
+op:
+CD no: 1
+Enter Movie Name: titanic
+Language: english
+Price: 100
+Date of Release (mm/dd/yyyy): 01/01/1997
+
+question4:
+echo -e "Enter the file 1 : \c"
+read file1
+echo -e "Enter the file 2 : \c"
+read file2
+if [ -e $file1 ]
+then
+  if [ -r $file1 ]
+  then
+ if [ -e $second ]
+ then
+   echo -e "Alert! file 2 already exist. Press 'y' to overwrite. \c"
+   read yn
+   if [ yn='y' ]
+   then
+     cat $file1>$file2
+     echo "File copied."
+   fi
+ else
+   cat $file1>$file2
+   echo "File copied."
+ fi
+  else
+ echo "Sorry! file don't have read permission."
+  fi
+else
+  echo "Sorry! file 1 doesn't exist."
+fi
+
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a64.sh
+Enter the file 1 : hello
+Enter the file 2 : movie
+Alert! file 2 already exist. Press 'y' to overwrite. y
+File copied.
+
+question5:
+echo -n "Enter name of the directory : "
+read directory_name
+
+
+if [ -d "$directory_name" ];
+then
+    echo "Directory exist"
+        for i in `find $directory_name -size 0`
+        do
+            rm $i    
+            echo "Zero-sized file are is Successfully deleted"    
+        done
+else
+    echo "Directory does not exist"
+
+fi
+
+
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a65.sh
+Enter name of the directory : Desktop
+Directory exist
+Zero-sized files are Successfully deleted
+
+
+
+

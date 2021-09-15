@@ -1,0 +1,144 @@
+question1:
+echo "The name of all files having all permissions :"
+for file in *
+do
+if [ -f $file ]
+then
+if [ -r $file -a -w $file -a -x $file ]
+then
+ls -l $file
+fi
+fi
+done
+
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a81.sh
+The name of all files having all permissions :
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 426 Sep  2 17:18 a51.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 299 Sep  2 23:04 a52.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 332 Sep  2 23:37 a53.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 97 Sep  2 17:41 a54.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 332 Sep  3 16:54 a61.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 499 Sep  3 17:45 a62.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 386 Sep  3 16:56 a63.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 478 Sep  3 17:33 a64.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 330 Sep  3 17:11 a65.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 161 Sep  5 16:41 a81.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 272 Sep  1 16:22 ass41.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 1060 Sep  1 16:50 ass42.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 70 Sep  1 17:37 ass44.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 316 Sep  2 08:56 ass45.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 63 Aug 31 16:46 q1.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 78 Aug 31 17:27 q2.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 321 Sep  1 12:17 q3.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 236 Aug 31 18:31 q4.sh
+-rwxrwxr-x 1 yashasvipawar yashasvipawar 326 Sep  1 12:32 q5.sh
+
+question2:
+echo "Enter a name:\c"
+read fname
+if [ -d $fname ]
+then
+ls $fname
+echo "This is a directory"
+fi
+if [ -f $fname ]
+then
+cat<$fname
+echo "This is a file"
+fi
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a8q2.sh
+Enter a file or dir name:\c
+q4vow.txt
+a BA Ed In OU
+euu On A Ana
+i blUe u
+DO Ion
+us
+This is a file
+yashasvipawar@yashasvipawar-VirtualBox:~$./a8q2.sh
+Enter a file or dir name:\c
+q2q5
+q2.txt q5.txt
+This is a directory
+
+question3:
+echo "enter the first file name:"
+read first
+echo "enter the second file name:"
+read second
+if [ -e $first ]
+then
+echo "$first file exist"
+if [ -e $second ]
+then
+echo "$second file exists"
+cat $first>>$second
+else
+cat $first>$second
+fi
+fi
+echo "appended content of first file to second file"
+
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a82.sh
+enter the first file name:
+0
+enter the second file name:
+1
+0 file exist
+1 file exists
+appended content of first file to second file
+
+question4:
+echo -n "Enter number: "
+read n
+ 
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+ 
+echo "Your number $n in words : "
+for (( i=1; i<=$len; i++ ))
+do
+   
+    digit=$(echo $n | cut -c $i)
+   
+    case $digit in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac
+echo " "
+done
+
+
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a84.sh
+Enter number: 2
+Your number 2 in words :
+two 
+
+question5:
+echo -n "Enter file name : "
+read file
+ 
+[ -w $file ] && W="Write = yes" || W="Write = No"
+[ -x $file ] && X="Execute = yes" || X="Execute = No"
+[ -r $file ] && R="Read = yes" || R="Read = No"
+ 
+echo "$file permissions"
+echo "$W"
+echo "$R"
+echo "$X"
+
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a85.sh
+Enter file name : hi.txt
+hi.txt permissions
+Write = yes
+Read = yes
+Execute = No

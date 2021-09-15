@@ -1,0 +1,151 @@
+question1:
+echo "Enter marks of unix:"
+read unix
+echo "Enter marks of VB.Net:"
+read vb
+echo "Enter marks of PHP:"
+read php
+echo "sum of marks is:"
+expr $unix + $vb + $php
+echo " Average: "
+avg=$((($unix + $vb + $php) / 3 ))
+echo $avg
+
+
+if [ $avg -ge 70 ]
+then
+echo "Distinction"
+elif [ $avg -ge 60 ]
+then
+echo "First class"
+elif [ $avg -ge 50 ]
+then
+echo "Second class"
+elif [ $avg -ge 40 ]
+then
+echo "Third class"
+else
+echo "Fail"
+fi
+
+op:yashasvipawar@yashasvipawar-VirtualBox:~$ ./a51.sh
+Enter marks of unix:
+90
+Enter marks of VB.Net:
+89
+Enter marks of PHP:
+99
+sum of marks is:
+278
+ Average:
+92
+Distinction
+
+question2:
+echo "enter two nos:"
+read a
+read b
+echo "enter choice:"
+echo "1.addition"
+echo "2.subtraction"
+echo "3.multiplication"
+echo "4.division"
+read ch
+echo "result is:"
+case $ch in
+1)res= echo $a + $b | bc ;;
+2)res= echo $a - $b | bc  ;;
+3)res= echo $a \* $b | bc  ;;
+4)res= echo $a / $b | bc  ;;
+esac
+
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a52.sh
+enter two nos:
+3
+55
+enter choice:
+1.addition
+2.subtraction
+3.multiplication
+4.division
+3
+result is:
+165
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a52.sh
+enter two nos:
+6
+3
+enter choice:
+1.addition
+2.subtraction
+3.multiplication
+4.division
+4
+result is:
+2
+
+question3:
+random=$(( $RANDOM%10 ))
+echo $random
+
+for i in 1 2 3 4 5 6
+do
+echo "This is your $i chance guess my number:"
+read num
+
+if [ $num -eq $random ]
+then
+echo "correct guess"
+else
+echo "wrong guess"
+fi
+if [ $num -eq $random ]
+then
+continue
+elif [ $num -ge  $random ]
+then
+echo "number is too big"
+else
+echo "number is too small"
+fi
+done
+
+
+op:yashasvipawar@yashasvipawar-VirtualBox:~$ ./a53.sh
+0
+This is your 1 chance guess my number:
+0
+correct guess
+This is your 2 chance guess my number:
+2
+wrong guess
+number is too big
+This is your 3 chance guess my number:
+4
+wrong guess
+number is too big
+This is your 4 chance guess my number:
+6
+wrong guess
+number is too big
+This is your 5 chance guess my number:
+0
+correct guess
+This is your 6 chance guess my number:
+9
+wrong guess
+number is too big
+
+question4:
+echo "enter login id:"
+read myuser
+echo "USERNAME:$myuser"
+startofscript= date '+Time:%H:%M:%S'
+
+op:
+yashasvipawar@yashasvipawar-VirtualBox:~$ ./a54.sh
+enter login id:
+yashasvipawar
+USERNAME:yashasvipawar
+Time:17:43:31
