@@ -1,0 +1,20 @@
+#arr=(1 2 4 8 3)
+read -a arr
+min=${arr[0]}
+max=${arr[0]}
+
+for i in ${arr[@]}
+do
+    if [[ $i -gt $max ]]
+    then
+    	max=$i
+    fi
+    
+    if [[ $i -lt $min ]]
+    then 
+    	min=$i
+    fi
+done
+
+echo "The Maximum value is $max"
+echo "The Minimum value is $min"

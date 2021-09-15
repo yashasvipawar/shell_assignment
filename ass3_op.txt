@@ -1,0 +1,112 @@
+question1:
+for file in Desktop/*.sh
+do mv "$file" "${file%.*}.exe"
+done
+
+op:changed file name hello.sh to hello.exe
+
+question2:
+echo "enter 10 numbers:"
+read -a arr
+
+count=0
+
+
+for i in "${arr[@]}"
+do
+    if [ $i -lt 0 ]
+    then
+    	echo "$i is negative"
+    elif [ $i -gt 0 ]
+    then
+    	echo "$i is positive"    
+    else
+    	echo "Number is 0"
+    fi
+done
+
+echo "ascending order is: "
+sort -n <(printf "%d\n" "${arr[@]}") | tr "\n" " "
+echo
+
+op:yashasvipawar@yashasvipawar-VirtualBox:~$ ./q3.sh
+enter 10 numbers:
+1 2 3 -4 -5 -6 7 0  9 0
+1 is positive
+2 is positive
+3 is positive
+-4 is negative
+-5 is negative
+-6 is negative
+7 is positive
+Number is 0
+9 is positive
+Number is 0
+ascending order is:
+-6 -5 -4 0 0 1 2 3 7 9
+
+question3:
+while((i<=999))
+do
+c=$i
+d=$i
+b=0
+a=0
+#checking each number
+while((c>0))
+do
+#separating each digit
+a=$((c%10))
+#finding cube of each digit and adding them
+b=$((b + a*a*a))
+c=$((c/10))
+done
+if((b==d)); then
+echo "$i"
+fi
+i=$((i+1))
+done
+
+op:yashasvipawar@yashasvipawar-VirtualBox:~$ ./q4.sh
+1
+153
+370
+371
+407
+
+question4:
+date '+DATE:%d-%m-%y%nTIME:%H:%M:%S'
+date '+DATE:%m/%d/%y%nTIME:%H:%M:%S'
+
+op:yashasvipawar@yashasvipawar-VirtualBox:~$ ./q2.sh
+DATE:31-08-21
+TIME:17:27:11
+DATE:08/31/21
+TIME:17:27:11
+
+question5:
+read -a arr
+min=${arr[0]}
+max=${arr[0]}
+
+for i in ${arr[@]}
+do
+    if [[ $i -gt $max ]]
+    then
+    	max=$i
+    fi
+    
+    if [[ $i -lt $min ]]
+    then 
+    	min=$i
+    fi
+done
+
+echo "The Maximum value is $max"
+echo "The Minimum value is $min"
+
+op:5 6 -3 4 9
+The Maximum value is 9
+The Minimum value is -3
+
+
