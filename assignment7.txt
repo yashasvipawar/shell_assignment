@@ -1,0 +1,147 @@
+question4:
+clear
+i="y"
+echo "Enter name of database "
+read db
+while [ $i = "y" ]
+do
+clear
+echo "1.View the Data Base "
+echo "2.View Specific Records "
+echo "3.Add Records "
+echo "4.Delete Records "
+echo "5.Exit "
+echo "Enter your choice "
+read ch
+    case $ch in
+        1)cat $db;;
+        2)echo "Enter rollno "
+          read id
+            grep -i "$id" $db;;
+        3)echo "Enter new rollno "
+          read roll
+          echo "Enter new name:"
+          read name
+          echo "Enter semester "
+          read sem
+          echo "Enter mark of english"
+          read eng
+          echo "Enter mark of maths"
+          read maths
+          echo "Enter mark of science"
+          read sci
+          echo "$roll    $name    $sem    $eng   $maths   $sci">>$db;;
+        4)echo "Enter rollno"
+          read id
+     
+        grep -v "$id" $db >dbs1    
+          echo "Record is deleted"
+         cat dbs1;;          
+        5)exit;;
+        *)echo "Invalid choice ";;
+    esac
+echo "Do u want to continue ?"
+read i
+if [ $i != "y" ]
+then
+    exit
+fi
+done      
+
+op:1.View the Data Base
+2.View Specific Records
+3.Add Records
+4.Delete Records
+5.Exit
+Enter your choice
+3
+Enter new rollno
+1
+Enter new name:
+yashasvi
+Enter semester
+1
+Enter mark of english
+99
+Enter mark of maths
+98
+Enter mark of science
+98
+Do u want to continue ?
+y
+1.View the Data Base
+2.View Specific Records
+3.Add Records
+4.Delete Records
+5.Exit
+Enter your choice
+2
+Enter rollno
+1
+1    yashasvi    1    99   98   98
+Do u want to continue ?
+
+question5:
+matrix1=(1 2 3 4 5 6 7 8 9) #Matrix of size 3 by 3
+matrix2=(11 12 13 14 15 16 17 18 18 19) #Matrix of size 3 by 3
+rows=3
+cols=3
+echo "First matrix"
+for((i=0; i<rows; i++))
+do
+  for((j=0; j<cols; j++))
+  do
+    index=$((i*cols+j))
+    echo -n "${matrix1[index]} "
+  done
+  echo
+done
+ 
+echo "Second matrix"
+for((i=0; i<rows; i++))
+do
+  for((j=0; j<cols; j++))
+  do
+    index=$((i*cols+j))
+    echo -n "${matrix2[index]} "
+  done
+  echo
+done
+ 
+k=0
+matrix3=()
+for((i=0; i<rows; i++))
+do
+  for((j=0; j<cols; j++))
+  do
+    index=$((i*cols+j))
+    matrix3[k]=$((${matrix1[index]} + ${matrix2[index]}))
+    k=$((k+1))
+  done
+done
+echo "Addition of two matrix"
+for((i=0; i<rows; i++))
+do
+  for((j=0; j<cols; j++))
+  do
+    index=$((i*cols+j))
+    echo -n "${matrix3[index]} "
+  done
+  echo
+done
+
+op:
+yashasvi@DESKTOP-O1H73O2:~$ ./a75.sh
+First matrix
+1 2 3
+4 5 6
+7 8 9
+Second matrix
+11 12 13
+14 15 16
+17 18 18
+Addition of two matrix
+12 14 16
+18 20 22
+24 26 27
+
